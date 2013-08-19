@@ -1,11 +1,18 @@
-<div class="hero-unit">
-	<h1>Welcome to my first web app!</h1>
-	<p>
-		You've found a rockin' web app called
-		<%= link_to "Innately Curios", "http://www.innatelycurious.com" %>
-		
-	</p>
-	<p>
-		<%= link_to "Sign Up Now!", "#", class: "btn btn-primary btn-large" %>
-	</p>
-</div>
+<% if user_signed_in? %>
+<h1> You're logged in motherfucker </h1>
+
+<% else %>
+
+	<div class="hero-unit">
+		<h1>Welcome to my first web app!</h1>
+		<p>
+			You've found a rockin' web app called
+			<%= link_to "Innately Curios", "http://www.innatelycurious.com" %>
+			
+		</p>
+		<p>
+			<%= link_to "Sign Up Now!", new_user_registration_path, class: "btn btn-primary btn-large" %>
+		</p>
+	</div>
+
+<% end %>

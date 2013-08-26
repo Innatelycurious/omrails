@@ -1,6 +1,6 @@
 class Pin < ActiveRecord::Base
   
-  attr_accessible :description, :image # This line won't work in Rails 4, instead, you'll have to do what I show below
+  attr_accessible :description, :image, :image_remote_url 
 
   has_attached_file :image, styles: { medium: "320x240>"}
 
@@ -12,5 +12,12 @@ class Pin < ActiveRecord::Base
 
 
   belongs_to :user
+
+def image_remote_url=(url_value)
+	self.image = URI.parse(url_value) unless url_value.blank?
+	super
+end
+
+
 
 end
